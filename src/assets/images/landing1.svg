@@ -24,7 +24,7 @@
      inkscape:pagecheckerboard="0"
      showgrid="false"
      inkscape:zoom="1.3988673"
-     inkscape:cx="258.78079"
+     inkscape:cx="258.7808"
      inkscape:cy="147.61943"
      inkscape:window-width="1920"
      inkscape:window-height="1027"
@@ -1405,7 +1405,8 @@
   <path
      d="M563.142 143.35C564.761 133.369 557.993 123.966 548.026 122.348C538.059 120.73 528.666 127.509 527.047 137.489C525.428 147.469 532.196 156.872 542.163 158.491C552.13 160.109 561.523 153.33 563.142 143.35Z"
      fill="#6842C2"
-     id="path501" />
+     id="path501"
+     style="fill:#c27a42;fill-opacity:1" />
   <path
      d="M555.102 142.823C556.407 137.292 552.987 131.751 547.463 130.446C541.94 129.141 536.404 132.567 535.098 138.097C533.793 143.628 537.212 149.17 542.736 150.475C548.26 151.78 553.796 148.354 555.102 142.823Z"
      fill="#6842C2"
@@ -1414,7 +1415,8 @@
      stroke-miterlimit="10"
      stroke-linecap="round"
      stroke-linejoin="round"
-     id="path503" />
+     id="path503"
+     style="fill:#c27942;fill-opacity:1" />
   <path
      d="M545.081 133.695V140.424L541.534 143.976"
      fill="#6842C2"
