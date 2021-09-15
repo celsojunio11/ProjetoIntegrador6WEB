@@ -19,6 +19,8 @@
   --color-button-text: #ffffff;
   --color-box-base: #ffffff;
   --color-box-footer: #fafafc;
+  --color-botao-zap:#02be57;
+  --color-botao-zap-dark:#02a049;
 }
 
 * {
@@ -48,6 +50,7 @@ input,
 button,
 textarea {
   font: 500 1.6rem Poppins;
+  color: var(--color-text-base);
 }
 
 .container {
