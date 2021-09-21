@@ -1,11 +1,11 @@
 :root {
   font-size: 60%;
 
-  --color-background: #282a36;
+  --color-background:#f1f1f1;
   --color-primary-lighter: #fecb6d;
   --color-primary-light: #feb86d;
   --color-primary: #ff8400;
-  --color-primary-dark: #ff9100;
+  --color-primary-dark: #282a36;
   --color-primary-darker: #ff4800;
   --color-secundary: #282a36;
   --color-secundary-dark: #171820;
@@ -14,6 +14,7 @@
   --color-text-title: #484b5a;
   --color-text-complement: #4a4d58;
   --color-text-base: #3a3a3a;
+  --color-text-alert:rgb(161, 161, 161);
   --color-line-in-white: #f4f4f7;
   --color-input-background: #f8f8fc;
   --color-button-text: #ffffff;
