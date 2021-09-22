@@ -1,96 +1,95 @@
-import React from "react";
-import PageHeader from "../../components/PageHeader";
+import React, { useState, FormEvent } from 'react';
+import { useHistory } from 'react-router-dom'
 
-import warning from "../../assets/images/icons/warning.svg";
-import "./styles.css";
+import PageHeader from '../../components/PageHeader';
+import Input from '../../components/Input';
+import Textarea from '../../components/Textarea';
+import Select from '../../components/Select';
+
+import warningIcon from '../../assets/images/icons/warning.svg';
+
+//import api from '../../services/api';
+
+import './styles.css';
+
+
 
 function TeacherForm() {
-
       return (
             <div id="page-teacher-form" className="container">
-                  <PageHeader title="Que incível que você quer dar aulas.">
-                        <p>O primeiro passo, é preencher esse formulário de inscrição</p>
-                  </PageHeader>
-                  <div id="page-main">
-                        <form action="" id="create-class">
-                              <fieldset>
-                                    <legend>Seus dados</legend>
+                  <PageHeader
+                        title="Que incrível que você quer dar aulas."
+                        description="O primeiro passo é preencher esse formulário de inscrição"
+                  />
 
-                                    <div className="input-block">
-                                          <label>Nome Completo</label>
-                                          <input name="name" id="name" required />
-                                    </div>
-                                    <div className="input-block">
-                                          <label>Link da sua foto <small>(comece com https://)</small></label>
-                                          <input name="avatar" id="avatar" type="url" required />
-                                    </div>
-                                    <div className="input-block">
-                                          <label>Whatsapp <small>(somente números)</small></label>
-                                          <input name="whatsapp" id="whatsapp" type="number" required />
-                                    </div>
-                                    <div className="textarea-block">
-                                          <label>Biografia</label>
-                                          <textarea name="bio" id="bio" required></textarea>
-                                    </div>
-                              </fieldset>
-                              <fieldset>
-                                    <legend>Sobre a aula</legend>
-                                    <div className="select-block">
-                                          <label>Matéria</label>
-                                          <select name="subject" id="subject" required>
-                                                <option value="">Selecione uma opção</option>
-                                                <option value="1">React</option>
-                                                <option value="2">Node</option>
-                                                <option value="3">Java</option>
-                                                <option value="4">Sociologia</option>
-                                          </select>
-                                    </div>
-                                    <div className="input-block">
-                                          <label>Custo da sua hora/aula
-                                                <small>(R$)</small></label>
-                                          <input type="cost" id="cost" required />
-                                    </div>
-                              </fieldset>
-                              <fieldset id="schedule-itens">
-                                    <legend>Horários disponíveis
-                                          <button id="add-time">+ Novo Horário</button>
-                                    </legend>
-                                    <div className="schedule-item">
-                                          <div className="select-block">
-                                                <label htmlFor="weekday">Dia da Semana</label>
-                                                <select name="weekday[]" required>
-                                                      <option value="">Selecione uma opção</option>
-                                                      <option value="0">Domingo</option>
-                                                      <option value="1">Segunda-feira</option>
-                                                      <option value="2">Terça-feira</option>
-                                                      <option value="3">Quarta-feira</option>
-                                                      <option value="4">Quinta-feira</option>
-                                                      <option value="5">Sexta-feira</option>
-                                                      <option value="6">Sábado</option>
-                                                </select>
-                                          </div>
-                                          <div className="input-block">
-                                                <label htmlFor="time_from">Das</label>
-                                                <input type="time" id="time_from" name="time_from" required />
-                                          </div>
-                                          <div className="input-block">
-                                                <label htmlFor="time_to">Até</label>
-                                                <input type="time" id="time_to" name="time_from" required />
-                                          </div>
-                                    </div>
-                              </fieldset>
-                        </form>
+                  <main>
+                        <fieldset>
+                              <legend>Seus dados</legend>
+                              <Input name="name" label="Nome completo" />
+                              <Input name="avatar" label="Avatar" />
+                              <Input name="whatsapp" label="Whatsapp" />
+                              <Textarea name="bio" label="Biografia" />
+                        </fieldset>
+
+                        <fieldset>
+                              <legend>Sobre a aula</legend>
+                              <Select
+                                    name="subject"
+                                    label="Matéria"
+                                    options={[
+                                          { value: 'Artes', label: 'Artes' },
+                                          { value: 'Biologia', label: 'Biologia' },
+                                          { value: 'Geoagrafia', label: 'Geoagrafia' },
+                                          { value: 'Literatura', label: 'Literatura' },
+                                          { value: 'Matematica', label: 'Matematica' },
+                                          { value: 'Inglês', label: 'Inglês' },
+                                          { value: 'Programação', label: 'Programação' },
+                                    ]}
+                              />
+                              <Input name="cost" label="Custo da sua hora por aula" />
+                        </fieldset>
+
+                        <fieldset>
+                              <legend>
+                                    Horários disponíveis
+                                    <button type="button">
+                                          + Novo horário
+                                    </button>
+                              </legend>
+                        </fieldset>
+
+                        <div className="schedule-item">
+                        <Select
+                                    name="subject"
+                                    label="Matéria"
+                                    options={[
+                                          { value: 'Artes', label: 'Artes' },
+                                          { value: 'Biologia', label: 'Biologia' },
+                                          { value: 'Geoagrafia', label: 'Geoagrafia' },
+                                          { value: 'Literatura', label: 'Literatura' },
+                                          { value: 'Matematica', label: 'Matematica' },
+                                          { value: 'Inglês', label: 'Inglês' },
+                                          { value: 'Programação', label: 'Programação' },
+                                    ]}
+                              />
+                              <Input name="from" label = "Das" type = "time" />
+                              <Input name="from" label = "Das" type = "time" />
+                              
+                        </div>
+
                         <footer>
                               <p>
-                                    <img src={warning} alt="aviso" />
-                                    Importante!<br />
+                                    <img src={warningIcon} alt="IMPORTANTE" />
+                                    Importante! <br />
                                     Preencha todos os dados
                               </p>
-                              <button type="submit" form="create-class">Salvar Cadastro</button>
+                              <button type="button" >
+                                    Salvar cadastro
+                              </button>
                         </footer>
-                  </div>
-            </div>
+                  </main>
 
+            </div>
       )
 }
 

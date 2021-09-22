@@ -3,28 +3,45 @@ import React from "react";
 import PageHeader from "../../components/PageHeader";
 import TeacherItem from "../../components/TeacherItem";
 
+import Input from "../../components/Input";
+
 
 import "./styles.css";
+import Select from "../../components/Select";
 
 function TeacherList() {
       return (
             <div id="page-teacher-list" className="container">
                   <PageHeader title="Esses são nossos professores disponíveis.">
                         <form id="search-teachers">
-                              <div className="input-block">
-                                    <label htmlFor="subject">Matéria</label>
-                                    <input type="text" id="subject" />
-                              </div>
-
-                              <div className="input-block">
-                                    <label htmlFor="week-day">Dia da semana</label>
-                                    <input type="text" id="subject" />
-                              </div>
-
-                              <div className="input-block">
-                                    <label htmlFor="time">Hora</label>
-                                    <input type="text" id="subject" />
-                              </div>
+                        <Select
+                                    name="subject"
+                                    label="Matéria"
+                                    options={[
+                                          { value: 'Artes', label: 'Artes' },
+                                          { value: 'Biologia', label: 'Biologia' },
+                                          { value: 'Geoagrafia', label: 'Geoagrafia' },
+                                          { value: 'Literatura', label: 'Literatura' },
+                                          { value: 'Matematica', label: 'Matematica' },
+                                          { value: 'Inglês', label: 'Inglês' },
+                                          { value: 'Programação', label: 'Programação' },
+                                    ]}
+                              />
+                              <Select
+                                    name="week_day"
+                                    label="Dia da semana"
+                                    options={[
+                                          { value: '0', label: 'Domingo' },
+                                          { value: '1', label: 'Segunda-feira' },
+                                          { value: '2', label: 'Terça-feira' },
+                                          { value: '3', label: 'Quarta-feira' },
+                                          { value: '4', label: 'Quinta-feira' },
+                                          { value: '5', label: 'Sexta-feira' },
+                                          { value: '6', label: 'Sábado' },
+                                          
+                                    ]}
+                              />
+                              <Input  type="time" name = "time" label = "Hora" />
                         </form>
                   </PageHeader>
 
