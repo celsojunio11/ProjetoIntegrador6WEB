@@ -9,8 +9,20 @@ import giveClassesIcon from "../../assets/images/icons/give-classes.svg";
 import purpleHeartIconIcon from "../../assets/images/icons/purple-heart.svg";
 
 import "./styles.css";
+import api from "../../services/api";
+import { useEffect, useState } from 'react';
 
 function Landing() {
+      const [totalConnections, setTotalConnections] = useState(0);
+
+      useEffect(() => {
+            api.get('connections').then(response => {
+                  const {total}= response.data;
+                  
+                  setTotalConnections(total);
+            })
+      });
+
       return (
             <div id="page-landing">
                   <div id="page-landing-content" className="container">
@@ -37,7 +49,7 @@ function Landing() {
                               </Link>
                         </div>
                         <span className="total-connections">
-                              Total de 100 conexões já realizadas{" "}
+                              Total de {totalConnections} conexões já realizadas{" "}
                               <img src={purpleHeartIconIcon} alt="Coração" />
                         </span>
                   </div>
