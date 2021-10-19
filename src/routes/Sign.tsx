@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter, Route } from 'react-router-dom';
 
-import Landing from './Landing';
-import TeacherList from './TeacherList';
-import TeacherForm from './TeacherForm';
+import Landing from '../pages/Landing';
+import TeacherList from '../pages/TeacherList';
+import TeacherForm from '../pages/TeacherForm';
 
-function Routes() {
+const SignRoutes: React.FC = () =>  {
       return (
             <BrowserRouter>
                   <Route path="/" exact component={Landing} />
@@ -15,4 +15,4 @@ function Routes() {
       );
 }
 
-export default Routes;
+export default SignRoutes;
