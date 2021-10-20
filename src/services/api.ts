@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axios from "axios";
 
 const api = axios.create({
-      baseURL: 'http://localhost:3333',
+  baseURL: "http://gestaobov.hopto.org:8082",
 });
 
 export default api;
