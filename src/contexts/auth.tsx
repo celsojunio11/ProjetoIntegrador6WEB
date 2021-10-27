@@ -2,13 +2,13 @@ import React, { createContext, useState, useContext, useEffect } from "react";
 import api from "../services/api";
 
 interface User {
-      userName: string;
+      username: string;
+      password: string;
 }
 
 interface Register {
-      name: string;
       username: string;
-      pass: string;
+      password: string;
 }
 
 interface AuthContextData {
@@ -70,14 +70,28 @@ export const AuthProvider: React.FC = ({ children }) => {
       async function Register(user: Register) {
             console.log(user);
             await api
-                  .post("/user", {
-                        name: user.name,
-                        username: user.username,
-                        pass: user.pass,
-                        token: "",
+                  .post("/role/1/register", {
+                        userData: {
+                              name: "PI - TESTE",
+                              email: user.username,
+                              password: user.password,
+                              birthDate: "2000-06-27",
+                              docType: "CPF",
+                              docNumber: "60359978640",
+                              areaCode: "34",
+                              cellNumber: "991189081"
+                        },
+                        address: {
+                              cep: "38750004",
+                              state: "MG",
+                              city: "Presidente Olegário",
+                              neighborhood: "Planalto",
+                              street: "Rua Vereador Antônio Ferreira",
+                              number: "1810"
+                        }
                   })
                   .then(res => {
-                        Login(user.username, user.pass);
+                        Login(user.username, user.password);
                   })
                   .catch(err => {
                         if (err.response) {

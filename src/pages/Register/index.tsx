@@ -11,11 +11,14 @@ import "./styles.css";
 function Landing() {
       const [user, setUser] = useState("");
       const [password, setPassword] = useState("");
+      const [rePassword, setRepassword] = useState("");
 
       const context = useAuth();
 
-      const handleLogin = () => {
-            context.Login(user, password);
+      const handleRegister = () => {
+            if(rePassword === password) {
+                  context.Register({ username: user, password });
+            }
       };
 
       return (
@@ -25,9 +28,6 @@ function Landing() {
                               <img src={logoImg} alt="Educa+" />
                               <h2>Sua plataforma de estudos online.</h2>
                         </div>
-
-                        
-
                         <div className="inputs-container">
                               <Input
                                     name="username"
@@ -50,13 +50,13 @@ function Landing() {
                                     name="paswword"
                                     label="Insira a senha novamente"
                                     type="password"
-                                    value={password}
+                                    value={rePassword}
                                     onChange={e => {
-                                          setPassword(e.target.value);
+                                          setRepassword(e.target.value);
                                     }}
                               />
-                              <Link to="/home">
-                                    <button type="submit" onClick={handleLogin}>
+                              <Link to="/">
+                                    <button type="submit" onClick={handleRegister}>
                                           Salvar cadastro
                                     </button>
                               </Link>
