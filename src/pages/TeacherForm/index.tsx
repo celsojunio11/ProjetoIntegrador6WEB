@@ -138,6 +138,50 @@ function TeacherForm() {
                               </fieldset>
 
                               <fieldset>
+                                    <legend>Anexos</legend>
+
+                                    <Input
+                                          name="pdf"
+                                          label="PDF*"
+                                          value={cost}
+                                          onChange={(e) => { setCost(e.target.value) }}
+                                    />
+
+                                    <Input
+                                          name="imagens"
+                                          label="Imagens"
+                                          value={cost}
+                                          onChange={(e) => { setCost(e.target.value) }}
+                                    />
+
+                                    <Input
+                                          name="word"
+                                          label="Word"
+                                          value={cost}
+                                          onChange={(e) => { setCost(e.target.value) }}
+                                    />
+
+                                    <Input
+                                          name="video"
+                                          label="Vídeo"
+                                          value={cost}
+                                          onChange={(e) => { setCost(e.target.value) }}
+                                    />
+
+                                    <footer>
+                                          <p>
+
+                                          </p>
+                                          <button type="submit">
+                                                Buscar arquivos
+                                          </button>
+                                    </footer>
+
+                              </fieldset>
+
+
+
+                              <fieldset>
                                     <legend>
                                           Horários disponíveis
                                           <button type="button" onClick={addNewScheduleItem}>
