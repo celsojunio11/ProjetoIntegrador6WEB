@@ -51,7 +51,7 @@ function Landing() {
                                     </button>
                               </Link>
 
-                              <Link to="/home">
+                              <Link to="/">
                                     <button type="submit" onClick={handleLogin}>
                                           Login
                                     </button>
