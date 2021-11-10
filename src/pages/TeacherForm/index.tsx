@@ -145,29 +145,7 @@ function TeacherForm() {
                                           label="PDF*"
                                           value={cost}
                                           onChange={(e) => { setCost(e.target.value) }}
-                                    />
-
-                                    <Input
-                                          name="imagens"
-                                          label="Imagens"
-                                          value={cost}
-                                          onChange={(e) => { setCost(e.target.value) }}
-                                    />
-
-                                    <Input
-                                          name="word"
-                                          label="Word"
-                                          value={cost}
-                                          onChange={(e) => { setCost(e.target.value) }}
-                                    />
-
-                                    <Input
-                                          name="video"
-                                          label="Vídeo"
-                                          value={cost}
-                                          onChange={(e) => { setCost(e.target.value) }}
-                                    />
-
+                                    />                                  
                                     <footer>
                                           <p>
 
