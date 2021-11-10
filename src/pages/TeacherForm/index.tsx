@@ -1,4 +1,4 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { useHistory } from 'react-router-dom'
 
 import PageHeader from '../../components/PageHeader';
@@ -23,6 +23,9 @@ function TeacherForm() {
       const [subject, setSubject] = useState('');
       const [cost, setCost] = useState('');
 
+      const [files, setFiles] = useState<File[]>([]);
+      const [filesPreview, setFilesPreview] = useState<string[]>([]);
+
       const [scheduleItems, setScheduleItems] = useState([
             { week_day: 0, from: '', to: '' }
       ]);
@@ -45,6 +48,23 @@ function TeacherForm() {
 
             setScheduleItems(updatedScheduleItems);
       }
+
+      function handleSelectedFiles(event: ChangeEvent<HTMLInputElement>) {
+            if (!event.target.files) {
+                  return;
+            }
+            
+            const selectedFiles = Array.from(event.target.files);
+            
+            setFiles(selectedFiles);
+
+            const selectedFilesPreview = selectedFiles.map(file => {
+                  return URL.createObjectURL(file);
+            });
+      
+            setFilesPreview(selectedFilesPreview);
+      }
+        
 
       function handleCreateClass(e: FormEvent) {
             e.preventDefault();
@@ -141,20 +161,16 @@ function TeacherForm() {
                                     <legend>Anexos</legend>
 
                                     <Input
-                                          name="pdf"
-                                          label="PDF*"
-                                          value={cost}
-                                          onChange={(e) => { setCost(e.target.value) }}
-                                    />                                  
-                                    <footer>
-                                          <p>
+                                          name="Material Complementar"
+                                          label="Material Complementar"
+                                          type="file"
+                                          multiple
+                                          onChange={handleSelectedFiles}
+                                    />   
 
-                                          </p>
-                                          <button type="submit">
-                                                Buscar arquivos
-                                          </button>
-                                    </footer>
-
+                                    { filesPreview.map(file => (
+                                          <iframe key={file} src={file} />
+                                    ))}                               
                               </fieldset>
 
 

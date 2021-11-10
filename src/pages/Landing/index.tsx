@@ -1,7 +1,8 @@
 import React from "react";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 import logoImg from "../../assets/images/logo1.svg";
+import logoImg2 from "../../assets/images/logo2.svg";
 import landingImg from "../../assets/images/landing1.svg";
 
 import studyIcon from "../../assets/images/icons/study.svg";
@@ -10,51 +11,64 @@ import purpleHeartIconIcon from "../../assets/images/icons/purple-heart.svg";
 
 import "./styles.css";
 import api from "../../services/api";
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
+import { useAuth } from "../../contexts/auth";
 
 function Landing() {
-      const [totalConnections, setTotalConnections] = useState(0);
+  const [totalConnections, setTotalConnections] = useState(0);
+  const { role } = useAuth();
 
-      useEffect(() => {
-            api.get('connections').then(response => {
-                  const {total}= response.data;
-                  
-                  setTotalConnections(total);
-            })
-      });
+  useEffect(() => {
+    api.get("connections").then(response => {
+      const { total } = response.data;
 
-      return (
-            <div id="page-landing">
-                  <div id="page-landing-content" className="container">
-                        <div id="logo-container">
-                              <img src={logoImg} alt="Educa+" />
-                              <h2>Sua plataforma de estudos online.</h2>
-                        </div>
+      setTotalConnections(total);
+    });
+  });
 
-                        <img
-                              src={landingImg}
-                              alt="Plataforma de Estudos"
-                              className="hero-image"
-                        />
+  return (
+    <div id="page-landing">
+      <div id="page-landing-content" className="container">
+        <div id="logo-container">
+          <img src={role === 'user' ? logoImg : logoImg2} alt="Educa+" />
+          <h2>Sua plataforma de estudos online.</h2>
+        </div>
 
-                        <div className="buttons-container">
-                              <Link to="/study" className="study">
-                                    <img src={giveClassesIcon} alt="Estudar" />
-                                    Estudar
-                              </Link>
+        <img
+          src={landingImg}
+          alt="Plataforma de Estudos"
+          className="hero-image"
+        />
 
-                              <Link to="/give-classes" className="give-classes">
-                                    <img src={studyIcon} alt="Dar Aulas" />
-                                    Dar Aulas
-                              </Link>
-                        </div>
-                        <span className="total-connections">
-                              Total de {totalConnections} conexões já realizadas{" "}
-                              <img src={purpleHeartIconIcon} alt="Coração" />
-                        </span>
-                  </div>
-            </div>
-      );
+        <div className="buttons-container">
+          {role === "user" ? (
+            <>
+              <Link to="/study" className="study">
+                <img src={giveClassesIcon} alt="Estudar" />
+                {role === "user" ? "Estudar" : ""}
+              </Link>
+
+              <Link to="/give-classes" className="give-classes">
+                <img src={studyIcon} alt="Dar Aulas" />
+                Dar Aulas
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to="/study" className="study">
+                <img src={giveClassesIcon} alt="Estudar" />
+                {role === "user" ? "Estudar" : "Ver aulas"}
+              </Link>
+            </>
+          )}
+        </div>
+        <span className="total-connections">
+          Total de {totalConnections} conexões já realizadas{" "}
+          <img src={purpleHeartIconIcon} alt="Coração" />
+        </span>
+      </div>
+    </div>
+  );
 }
 
 export default Landing;

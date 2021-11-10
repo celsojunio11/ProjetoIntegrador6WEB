@@ -4,6 +4,7 @@ import api from "../services/api";
 interface User {
       username: string;
       password: string;
+      role: string;
 }
 
 interface Register {
@@ -14,6 +15,7 @@ interface Register {
 interface AuthContextData {
       signed: boolean;
       user: User | null;
+      role: string;
       Login(user: string, pass: string): Promise<any>;
       Register(user: object): Promise<any>;
       Logout(): void;
@@ -29,13 +31,18 @@ export function useAuth() {
 
 export const AuthProvider: React.FC = ({ children }) => {
       const [user, setUser] = useState<User | null>(null);
+      const [role, setRole] = useState('');
 
       useEffect(() => {
             const storagedToken = localStorage.getItem("@App:token");
             const storagedUser = localStorage.getItem("@App:user");
+            const storagedRole = localStorage.getItem("@App:role");
 
-            if (storagedToken && storagedUser) {
+            console.log(storagedRole);
+            
+            if (storagedToken && storagedUser && storagedRole) {
                   setUser(JSON.parse(storagedUser));
+                  setRole(JSON.parse(storagedRole));
                   api.defaults.headers.Authorization = `Bearer ${JSON.parse(
                         storagedToken
                   )}`;
@@ -50,12 +57,14 @@ export const AuthProvider: React.FC = ({ children }) => {
                         password: pass,
                   })
                   .then(res => {
-                        const { userName, token } = res.data;
+                        const { userName, role, token } = res.data;
                         setUser(userName);
+                        setRole(role);
                         api.defaults.headers.Authorization = `Bearer ${token}`;
 
                         localStorage.setItem("@App:user", JSON.stringify(userName));
                         localStorage.setItem("@App:token", JSON.stringify(token));
+                        localStorage.setItem("@App:role", JSON.stringify(role));
 
                         return true;
                   })
@@ -109,7 +118,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 
       return (
             <AuthContext.Provider
-                  value={{ signed: Boolean(user), user, Login, Register, Logout }}
+                  value={{ signed: Boolean(user), user, role, Login, Register, Logout }}
             >
                   {children}
             </AuthContext.Provider>
