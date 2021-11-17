@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import logoImg from "../../assets/images/logo1.svg";
-import logoImg2 from "../../assets/images/logo2.svg";
+import logoImg1 from "../../assets/images/logo1.svg";
 import landingImg from "../../assets/images/landing1.svg";
 
 import studyIcon from "../../assets/images/icons/study.svg";
@@ -30,7 +30,7 @@ function Landing() {
     <div id="page-landing">
       <div id="page-landing-content" className="container">
         <div id="logo-container">
-          <img src={role === 'user' ? logoImg : logoImg2} alt="Educa+" />
+          <img src={role === 'user' ? logoImg : logoImg1} alt="Educa+" />
           <h2>Sua plataforma de estudos online.</h2>
         </div>
 

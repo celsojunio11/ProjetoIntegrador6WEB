@@ -53,18 +53,18 @@ function TeacherForm() {
             if (!event.target.files) {
                   return;
             }
-            
+
             const selectedFiles = Array.from(event.target.files);
-            
+
             setFiles(selectedFiles);
 
             const selectedFilesPreview = selectedFiles.map(file => {
                   return URL.createObjectURL(file);
             });
-      
+
             setFilesPreview(selectedFilesPreview);
       }
-        
+
 
       function handleCreateClass(e: FormEvent) {
             e.preventDefault();
@@ -96,6 +96,7 @@ function TeacherForm() {
                   <main>
                         <form onSubmit={handleCreateClass}>
                               <fieldset>
+                                    {/*
                                     <legend>Seus dados</legend>
 
                                     <Input
@@ -118,16 +119,12 @@ function TeacherForm() {
                                           value={whatsapp}
                                           onChange={(e) => { setWhatsapp(e.target.value) }}
                                     />
-
-                                    <Textarea
-                                          name="bio"
-                                          label="Biografia"
-                                          value={bio}
-                                          onChange={(e) => { setBio(e.target.value) }}
-                                    />
+                                    */} 
+                                    
                               </fieldset>
 
                               <fieldset>
+                              
                                     <legend>Sobre a aula</legend>
 
                                     <Select
@@ -149,6 +146,13 @@ function TeacherForm() {
                                           ]}
                                     />
 
+                                    <Textarea
+                                          name="bio"
+                                          label="Biografia"
+                                          value={bio}
+                                          onChange={(e) => { setBio(e.target.value) }}
+                                    />
+
                                     <Input
                                           name="cost"
                                           label="Custo da sua hora por aula"
@@ -166,11 +170,11 @@ function TeacherForm() {
                                           type="file"
                                           multiple
                                           onChange={handleSelectedFiles}
-                                    />   
+                                    />
 
-                                    { filesPreview.map(file => (
+                                    {filesPreview.map(file => (
                                           <iframe key={file} src={file} />
-                                    ))}                               
+                                    ))}
                               </fieldset>
 
 
