@@ -88,6 +88,12 @@ transition: background-color 0.2s;
   margin-left: 0.8rem;
 }
 
+.header {
+  position: absolute;
+  top: 90px;
+  right: 40px;
+}
+
 @media (min-width: 1100px) {
   #page-landing-content {
     max-width: 1100px;
@@ -134,5 +140,11 @@ transition: background-color 0.2s;
   .total-connections {
     grid-area: total;
     justify-self: end;
+  }
+
+  .header {
+    position: absolute;
+    top: 120px;
+    right: 420px;
   }
 }

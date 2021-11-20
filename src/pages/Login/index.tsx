@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import logoImg from "../../assets/images/logo1.svg";
+import Notification from '../../components/Notification';
 
 import Input from "../../components/Input";
 import { useAuth } from "../../contexts/auth";
@@ -15,6 +16,9 @@ function Landing() {
       const context = useAuth();
 
       const handleLogin = () => {
+            if(user === '' || password === '') {
+                  return Notification('danger', 'Usuário ou senha incorretos!');
+            }
             context.Login(user, password);
       };
 
