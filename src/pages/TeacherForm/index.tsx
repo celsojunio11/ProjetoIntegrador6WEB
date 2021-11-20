@@ -182,9 +182,6 @@ function TeacherForm() {
           <fieldset>
             <legend>
               Horário
-              {/* <button type="button" onClick={addNewScheduleItem}>
-                                                + Novo horário
-                                          </button> */}
             </legend>
             <div className="schedule-item">
               <Input

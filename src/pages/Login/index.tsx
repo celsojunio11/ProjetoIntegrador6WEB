@@ -28,9 +28,10 @@ function Landing() {
                         <div id="logo-container">
                               <img src={logoImg} alt="Educa+" />
                               <h2>Sua plataforma de estudos online.</h2>
-                        </div>
-
-                        <div className="inputs-container">
+                        
+                              </div>
+                        <div className="inputs-containers">
+                        
                               <Input
                                     name="username"
                                     label="Usuário"
@@ -39,6 +40,7 @@ function Landing() {
                                           setUser(e.target.value);
                                     }}
                               />
+                              
                               <Input
                                     name="paswword"
                                     label="Senha"
