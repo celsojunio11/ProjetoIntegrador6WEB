@@ -10,25 +10,17 @@ import giveClassesIcon from "../../assets/images/icons/give-classes.svg";
 import purpleHeartIconIcon from "../../assets/images/icons/purple-heart.svg";
 
 import "./styles.css";
-import api from "../../services/api";
-import { useEffect, useState } from "react";
 import { useAuth } from "../../contexts/auth";
 
 function Landing() {
-  const [totalConnections, setTotalConnections] = useState(0);
-  const { role } = useAuth();
-
-  useEffect(() => {
-    api.get("connections").then(response => {
-      const { total } = response.data;
-
-      setTotalConnections(total);
-    });
-  });
+  const { role, user } = useAuth();
 
   return (
     <div id="page-landing">
       <div id="page-landing-content" className="container">
+        <div className="header">
+          <p>{user}</p>
+        </div>
         <div id="logo-container">
           <img src={role === 'user' ? logoImg : logoImg1} alt="Educa+" />
           <h2>Sua plataforma de estudos online.</h2>
@@ -55,17 +47,13 @@ function Landing() {
             </>
           ) : (
             <>
-              <Link to="/study" className="study">
+              <Link to={role === "user" ? "/study" : "/payments"} className="study">
                 <img src={giveClassesIcon} alt="Estudar" />
-                {role === "user" ? "Estudar" : "Ver aulas"}
+                {role === "user" ? "Estudar" : "Pagamentos"}
               </Link>
             </>
           )}
         </div>
-        <span className="total-connections">
-          Total de {totalConnections} conexões já realizadas{" "}
-          <img src={purpleHeartIconIcon} alt="Coração" />
-        </span>
       </div>
     </div>
   );

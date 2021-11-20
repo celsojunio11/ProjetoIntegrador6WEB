@@ -4,26 +4,31 @@ import PageHeader from "../../components/PageHeader";
 import TeacherItem, { Teacher } from "../../components/TeacherItem";
 import Input from "../../components/Input";
 import Select from "../../components/Select";
+import moment from 'moment';
 
-import api from "../../services/api";
+import appApi from "../../services/appApi";
+import { useAuth } from "../../contexts/auth";
 
 import "./styles.css";
 
 function TeacherList() {
   const [teachers, setTeachers] = useState([]);
+  const [allTeachers, setAllTeachers] = useState([]);
 
   const [subject, setSubject] = useState("");
-  const [week_day, setWeekDay] = useState("");
-  const [time, setTime] = useState("");
+  const [modality, setModality] = useState("");
+  const [date, setDate] = useState("");
+  const { role } = useAuth();
 
   async function searchTeachers(e: FormEvent) {
     e.preventDefault();
 
-    const response = await api.get("class", {
+    console.log(subject, moment(date).format("DD/MM/YY"), modality)
+    const response = await appApi.get("class", {
       params: {
-        subject,
-        week_day,
-        time,
+        subject: subject !== '' ? subject : '',
+        date: date !== '' ? moment(date).format("DD/MM/YY") : '',
+        modality: modality !== '' ? modality : '',
       },
     });
 
@@ -42,8 +47,8 @@ function TeacherList() {
               setSubject(e.target.value);
             }}
             options={[
-              { value: "Artes", label: "Artes" },
-              { value: "Biologia", label: "Biologia" },
+              { value: "Linguas", label: "Linguas" },
+              { value: "Tecnologia", label: "Tecnologia" },
               { value: "Ciências", label: "Ciências" },
               { value: "Educação física", label: "Educação física" },
               { value: "Física", label: "Física" },
@@ -56,32 +61,27 @@ function TeacherList() {
           />
           <Select
             name="week_day"
-            label="Dia da semana"
-            value={week_day}
+            label="Modalidade"
+            value={modality}
             onChange={e => {
-              setWeekDay(e.target.value);
+              setModality(e.target.value);
             }}
             options={[
-              { value: "0", label: "Domingo" },
-              { value: "1", label: "Segunda-feira" },
-              { value: "2", label: "Terça-feira" },
-              { value: "3", label: "Quarta-feira" },
-              { value: "4", label: "Quinta-feira" },
-              { value: "5", label: "Sexta-feira" },
-              { value: "6", label: "Sábado" },
+              { value: "Presencial", label: "Presencial" },
+              { value: "Online", label: "Online" }
             ]}
           />
           <Input
-            type="time"
+            type="date"
             name="time"
-            label="Hora"
-            value={time}
+            label="Data"
+            value={date}
             onChange={e => {
-              setTime(e.target.value);
+              setDate(e.target.value);
             }}
           />
 
-          <button type="submit">Buscar</button>
+          <button onClick={searchTeachers}>Buscar</button>
         </form>
       </PageHeader>
 
