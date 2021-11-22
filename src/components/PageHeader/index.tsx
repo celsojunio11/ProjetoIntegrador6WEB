@@ -27,7 +27,6 @@ const PageHeader: React.FunctionComponent<PageHeaderProps> = (props) => {
                         {props.children}
                   </div>
 
-
             </header >
       );
 }

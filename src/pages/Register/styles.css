@@ -10,15 +10,23 @@
   background: var(--color-secundary);
 }
 
+.page-header {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-primary-dark);
+  margin-top: -280px;
+}
+
 .logo-container img {
   height: 10rem;
+  margin: 10px;
 }
 
 .hero-image {
   width: 100%;
 }
 
-.logo-containers {
+.logo-container {
   text-align: center;
   margin-bottom: 10px;
   margin-right: 25px;
@@ -41,16 +49,16 @@
   width: 30rem;
   height: 10.4rem;
   border-radius: 8px;
-  font: 700 2.0rem Archivo;
+  font: 700 2rem Archivo;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-text-decoration: none;
-color: var(--color-button-text);
+  text-decoration: none;
+  color: var(--color-button-text);
 
-transition: background-color 0.2s;
+  transition: background-color 0.2s;
 }
 
 .buttons-container a:first-child {
@@ -61,20 +69,20 @@ transition: background-color 0.2s;
   width: 4rem;
 }
 
-.buttons-container  a.study {
-  background:  var(--color-primary);
+.buttons-container a.study {
+  background: var(--color-primary);
 }
 
-.buttons-container  a.give-classes {
-  background:  var(--color-text-base);
+.buttons-container a.give-classes {
+  background: var(--color-text-base);
 }
 
-.buttons-container  a.study:hover {
-  background:  var(--color-primary-darker);
+.buttons-container a.study:hover {
+  background: var(--color-primary-darker);
 }
 
-.buttons-container  a.give-classes:hover {
-  background:  var(--color-secundary-dark);
+.buttons-container a.give-classes:hover {
+  background: var(--color-secundary-dark);
 }
 
 .total-connections {
@@ -94,6 +102,7 @@ transition: background-color 0.2s;
   flex-direction: row;
   justify-content: space-between;
   width: 600px;
+  margin-left: 40px;
 }
 
 .input-group-1 {
@@ -107,10 +116,9 @@ transition: background-color 0.2s;
     display: grid;
     grid-template-rows: 350px 1fr;
     grid-template-columns: 2fr 1fr 1fr;
-    grid-template-areas: 
+    grid-template-areas:
       "logo hero hero"
-      "buttons buttons total"
-    ;
+      "buttons buttons total";
   }
 
   .logo-container {
@@ -146,5 +154,5 @@ transition: background-color 0.2s;
   .total-connections {
     grid-area: total;
     justify-self: end;
-  }  
+  }
 }

@@ -2,6 +2,7 @@ import React, { useState, ChangeEvent, FormEvent } from "react";
 import { Link } from "react-router-dom";
 
 import logoImg from "../../assets/images/logo1.svg";
+import backIcon from "../../assets/images/icons/back.svg";
 
 import Input from "../../components/Input";
 import { useAuth } from "../../contexts/auth";
@@ -76,6 +77,13 @@ function Landing() {
 
       return (
             <div id="page-landing">
+                  <header className="page-header" >
+                        <div className="top-bar-container">
+                              <Link to="/">
+                                    <img src={backIcon} alt="Voltar" />
+                              </Link>
+                        </div>
+                  </header >
                   <div id="page-landing-content" className="container">
                         <div id="logo-container">
                               <img src={logoImg} alt="Educa+" />
@@ -88,7 +96,7 @@ function Landing() {
 
                                           <Input
                                                 name="username"
-                                                label="Usuário"
+                                                label="Usuário" 
                                                 value={user}
                                                 onChange={e => {
                                                       setUser(e.target.value);
@@ -114,7 +122,7 @@ function Landing() {
                                           />
                                     </div>
                                     <div className="input-group-2">
-                                    <legend><br /></legend>
+                                          <legend><br /></legend>
                                           <Input
                                                 name="name"
                                                 label="Nome completo"
@@ -137,6 +145,7 @@ function Landing() {
                                           />
                                     </div>
                               </div>
+                              
                               <Link to="/" >
                                     <button type="submit" onClick={handleRegister}>
                                           Salvar cadastro
